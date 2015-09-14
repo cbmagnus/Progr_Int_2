@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Incluir produto</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form id="formulario">
+                <p:messages autoUpdate="true"/>
+                <h:panelGrid>
+                    <p:panel header="Incluir Produtos" id="form">
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Produto: "/>
+                            <p:inputText value="#{produtoMB.produto.produto}"/>
+                            <h:outputText value="Quantidade: "/>
+                            <p:inputText value="#{produtoMB.produto.quantidade}"/>
+                            <h:outputText value="Valor unitário: "/>
+                            <p:inputText value="#{produtoMB.produto.valor}"/>
+                            <h:outputText value="Data da compra: "/>
+                            <p:inputText value="#{produtoMB.produto.dataCompra}"/>
+                            <h:outputText value="Local da compra: "/>
+                            <p:inputText value="#{produtoMB.produto.localCompra}"/>
+                        </h:panelGrid>
+
+                        <center>
+                            <p:commandButton value="GRAVAR" action="#{produtoMB.incluiProduto(prod)}" update="estoque, form"/>
+                            &nbsp;&nbsp;
+                            <p:commandButton value="LIMPAR" type="reset" update="estoque, form"/>
+                        </center>
+
+                    </p:panel>
+                    <p:dataTable value="#{controladorMB.produto.produto}" id="estoque" emptyMessage="Não ha registros." 
+                                 var="prod" paginator="true" rows="5">
+                        <p:column headerText="Produto" filterBy="#{controladorMB.produto.produto}">
+                            <h:outputText value="#{controladorMB.produto.produto}"/>
+                        </p:column>
+                        <p:column headerText="Quantidade">
+                            <h:outputText value="#{controladorMB.produto.quantidade}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+                <p:commandButton value="LOGOUT" action="#{controladorMB.realizaLogout()}"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

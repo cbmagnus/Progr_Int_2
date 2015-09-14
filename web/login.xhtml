@@ -1,0 +1,36 @@
+<!-- C:\Program Files\glassfish-4.1\bin\asadmin.bat  start-domain para iniciar o glassfish -->
+<?xhtml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                <h:panelGrid>
+                    <p:panel header="Loguin">
+                        <h:panelGrid columns="2" >
+                            <h:outputLabel value="Usuario: " for="idUsuario" />
+                            <p:inputText value="#{controladorMB.usuario.nome}" id="idUsuario"/>
+                            <h:outputLabel value="Senha: " for="idSenha"/>
+                            <p:password value="#{controladorMB.usuario.senha}" id="idSenha"/>
+                        </h:panelGrid>
+                        <center>
+                            <p:commandButton value="LOGIN" action="#{controladorMB.verificaLogin()}" />
+                            &nbsp;&nbsp;
+                            <p:commandButton value="LIMPAR" type="reset"/>
+                        </center>
+                    </p:panel>
+                </h:panelGrid>
+                <br/>
+                <h:messages id="mensagemLogin" errorStyle="color:red; font-size:x-large" showDetail="true"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
