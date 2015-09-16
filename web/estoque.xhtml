@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Estoque</title>
+    </h:head>
+    <h:body>
+        <p:panel header="Estoque" id="stoq">
+            <p:dataTable value="#{controladorMB.produto}" id="estoque" emptyMessage="Não ha registros." 
+                         var="prod" paginator="true" rows="5">
+                <p:column headerText="Produto" filterBy="#{prod.produto}">
+                    <h:outputText value="#{prod.produto}"/>
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <h:outputText value="#{prod.quantidade}"/>
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{prod.valor}"/>
+                </p:column>
+                <p:column headerText="Data Compra">
+                    <h:outputText value="#{prod.dataCompra}"/>
+                </p:column>
+                <p:column headerText="Local">
+                    <h:outputText value="#{prod.localCompra}"/>
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:body>
+</html>
+

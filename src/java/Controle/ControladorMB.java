@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.apache.jasper.tagplugins.jstl.ForEach;
 
 
 @ManagedBean
@@ -33,7 +34,9 @@ public class ControladorMB {
         listaUsuarios.add(new Usuario("darlan","123"));
         listaUsuarios.add(new Usuario("teste","123"));
         
-        listaProdutos.add(new Produto("Chocolate Branco Nestle 1Kg", 2, 22.50, "05/08/15", "nenhum"));
+        listaProdutos.add(new Produto("Chocolate Branco Nestle 1Kg", 5, 22.50, "05/08/15", "nenhum"));
+        listaProdutos.add(new Produto("Chocolate Preto Nestle 1Kg", 2, 18.50, "05/08/15", "nenhum"));
+        
     }
 
     public Usuario getUsuario() {
@@ -84,8 +87,10 @@ public class ControladorMB {
         return("login?faces-redirect=true");
     }
 
-    public void incluiProduto(Produto prod){
-        listaProdutos.add(prod);
+    public void incluiProduto(){
+        listaProdutos.add(produto);
+        produto = new Produto();
     }
+    
     
 }

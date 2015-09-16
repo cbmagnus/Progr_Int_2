@@ -1,9 +1,5 @@
 package Modelo;
 
-
-import java.util.Date;
-
-
 public class Produto {
     private String produto;
     private int quantidade;
