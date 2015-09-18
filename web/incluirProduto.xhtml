@@ -10,10 +10,29 @@
     </h:head>
     <h:body>
         <center>
-            <h:form id="formulario">
+<!--            <p:tabMenu activeIndex="#{controladorMB.listaProdutos}">
+                <p:menuitem value="Estoque" outcome="/ui/menu/tabMenu" icon="ui-icon-star">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Demos" outcome="/ui/menu/tabMenu" icon="ui-icon-search">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                <p:menuitem value="Documentation" outcome="/ui/menu/tabMenu" icon="ui-icon-document">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Support" outcome="/ui/menu/tabMenu" icon="ui-icon-wrench">
+                    <f:param name="i" value="3" />
+                </p:menuitem>
+                <p:menuitem value="Social" outcome="/ui/menu/tabMenu" icon="ui-icon-person">
+                    <f:param name="i" value="4" />
+                </p:menuitem>
+            </p:tabMenu>-->
+            
+            
+            <h:form id="formulario" style="width: 60%">
                 <p:messages autoUpdate="true"/>
-                <h:panelGrid>
-                    <p:panel header="Incluir Produtos" id="form">
+                <p:panel style="width: 70%; alignment-adjust: central; border: 0px">
+                    <p:panel header="Incluir Produtos">
                         <h:panelGrid columns="2" >
                             <h:outputText value="Produto: "/>
                             <p:inputText value="#{controladorMB.produto.produto}"/>
@@ -27,41 +46,31 @@
                             <p:inputText value="#{controladorMB.produto.localCompra}"/>
                         </h:panelGrid>
 
-                        <center>
-                            <p:commandButton value="GRAVAR" action="#{controladorMB.incluiProduto()}" 
-                                             update="formulario"/>
-                            &nbsp;&nbsp;
-                            <p:commandButton value="LIMPAR" type="reset" update="formulario"/>
-                        </center>
+                        <p:commandButton value="GRAVAR" action="#{controladorMB.incluiProduto()}" 
+                                         update="formulario"/>
+                        &nbsp;&nbsp;
+                        <p:commandButton value="LIMPAR" type="reset" update="formulario"/>
                     </p:panel>
-                </h:panelGrid>
-            </h:form>
 
-            <center>
-                <h:form>
-                    <h:panelGrid>
-                        <p:panel header="Estoque" id="stoq">
-                            <h:panelGrid columns="2">
-                                <p:dataTable value="#{controladorMB}" id="estoque" emptyMessage="Não ha registros." 
-                                             var="prod" paginator="true" rows="2">
-                                    <p:column headerText="Produto">
-                                        <ui:repeat value="#{controladorMB.listaProdutos}" var="listProd">
-                                            <h:outputText value="#{listProd.produto}"/>
-                                        </ui:repeat>
-                                    </p:column>
-                                    <p:column headerText="Quantidade">
-                                        <ui:repeat value="#{controladorMB.listaProdutos}" var="listProd">
-                                            <h:outputText value="#{listProd.quantidade}"/>
-                                        </ui:repeat>
-                                    </p:column>
-                                </p:dataTable>
-                            </h:panelGrid>
-                        </p:panel>
-                    </h:panelGrid>
+                    <p:panel header="Estoque">
+                        <h:panelGrid columns="2">
+                            <p:dataTable value="#{controladorMB.listaProdutos}" emptyMessage="Não ha registros." 
+                                         paginator="true" rows="4" var="listProd">
+                                <p:column headerText="Produto">
+                                    <h:outputText value="#{listProd.produto}"/>
+                                </p:column>
+                                <p:column headerText="Quantidade" style="width: 25%">
+                                    <h:outputText value="#{listProd.quantidade}"/><br/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </p:panel>
 
                     <p:commandButton value="LOGOUT" action="#{controladorMB.realizaLogout()}"/>
-                </h:form>
-            </center>
+                    &nbsp;&nbsp;
+                    <p:button value="Estoque" outcome="estoque"/>
+                </p:panel>
+            </h:form>
         </center>
     </h:body>
 </html>

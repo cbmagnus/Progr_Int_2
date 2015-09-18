@@ -9,26 +9,33 @@
         <title>Estoque</title>
     </h:head>
     <h:body>
-        <p:panel header="Estoque" id="stoq">
-            <p:dataTable value="#{controladorMB.produto}" id="estoque" emptyMessage="Não ha registros." 
-                         var="prod" paginator="true" rows="5">
-                <p:column headerText="Produto" filterBy="#{prod.produto}">
-                    <h:outputText value="#{prod.produto}"/>
-                </p:column>
-                <p:column headerText="Quantidade">
-                    <h:outputText value="#{prod.quantidade}"/>
-                </p:column>
-                <p:column headerText="Valor">
-                    <h:outputText value="#{prod.valor}"/>
-                </p:column>
-                <p:column headerText="Data Compra">
-                    <h:outputText value="#{prod.dataCompra}"/>
-                </p:column>
-                <p:column headerText="Local">
-                    <h:outputText value="#{prod.localCompra}"/>
-                </p:column>
-            </p:dataTable>
-        </p:panel>
+        <center>
+            <h:form id="estoque" style="alignment-adjust: central" >
+
+                <p:panel header="ESTOQUE" id="stoq" style="alignment-adjust: central">
+                    <p:dataTable value="#{controladorMB.listaProdutos}" emptyMessage="Não ha registros." 
+                                 var="prod" paginator="true" rows="15">
+                        <p:column headerText="Produto" filterBy="#{prod.produto}" style="width: 32%">
+                            <h:outputText value="#{prod.produto}"/>
+                        </p:column>
+                        <p:column headerText="Quantidade" style="width: 10%">
+                            <h:outputText value="#{prod.quantidade}"/>
+                        </p:column>
+                        <p:column headerText="Valor" style="width: 10%">
+                            <h:outputText value="$ #{prod.valor}"/>
+                        </p:column>
+                        <p:column headerText="Data Compra" style="width: 11%">
+                            <h:outputText value="#{prod.dataCompra}"/>
+                        </p:column>
+                        <p:column headerText="Local da compra">
+                            <h:outputText value="#{prod.localCompra}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+                <p:button value="Voltar Incluir" outcome="incluirProduto"/>
+
+            </h:form>
+        </center>
     </h:body>
 </html>
 
