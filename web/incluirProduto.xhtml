@@ -26,12 +26,12 @@
                 <p:menuitem value="Social" outcome="/ui/menu/tabMenu" icon="ui-icon-person">
                     <f:param name="i" value="4" />
                 </p:menuitem>
-            </p:tabMenu>-->
-            
-            
+            </p:tabMenu>
+            -->
+
             <h:form id="formulario" style="width: 60%">
                 <p:messages autoUpdate="true"/>
-                <p:panel style="width: 70%; alignment-adjust: central; border: 0px">
+                <p:panel style="alignment-adjust: central; border: 0px">
                     <p:panel header="Incluir Produtos">
                         <h:panelGrid columns="2" >
                             <h:outputText value="Produto: "/>
@@ -40,8 +40,10 @@
                             <p:inputText value="#{controladorMB.produto.quantidade}"/>
                             <h:outputText value="Valor unitário: "/>
                             <p:inputText value="#{controladorMB.produto.valor}"/>
-                            <h:outputText value="Data da compra: "/>
-                            <p:inputText value="#{controladorMB.produto.dataCompra}"/>
+                            <h:outputText value="Peso Kg: "/>
+                            <p:inputText value="#{controladorMB.produto.peso}"/>
+                            <p:outputLabel for="mask" value="Data compra " />
+                            <p:calendar id="mask" value="#{controladorMB.produto.dataCompra}" pattern="dd-MM-yyyy" mask="true" />
                             <h:outputText value="Local da compra: "/>
                             <p:inputText value="#{controladorMB.produto.localCompra}"/>
                         </h:panelGrid>
@@ -67,8 +69,14 @@
                     </p:panel>
 
                     <p:commandButton value="LOGOUT" action="#{controladorMB.realizaLogout()}"/>
-                    &nbsp;&nbsp;
+                    &nbsp;
                     <p:button value="Estoque" outcome="estoque"/>
+                    &nbsp;
+                    <p:button value="Incluir Alfajor" outcome="incluiTipoAlfajor"/>
+                    &nbsp;
+                    <p:button value="Produção" outcome="producao"/>
+                    &nbsp;
+                    <p:button value="Encomendas" outcome="encomendas"/>
                 </p:panel>
             </h:form>
         </center>

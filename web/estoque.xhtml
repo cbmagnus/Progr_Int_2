@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <center>
-            <h:form id="estoque" style="alignment-adjust: central" >
+            <h:form id="estoque" style="alignment-adjust: central; width: 85%" >
 
                 <p:panel header="ESTOQUE" id="stoq" style="alignment-adjust: central">
                     <p:dataTable value="#{controladorMB.listaProdutos}" emptyMessage="Não ha registros." 
@@ -32,8 +32,15 @@
                         </p:column>
                     </p:dataTable>
                 </p:panel>
-                <p:button value="Voltar Incluir" outcome="incluirProduto"/>
-
+                <p:commandButton value="LOGOUT" action="#{controladorMB.realizaLogout()}"/>
+                &nbsp;
+                <p:button value="Incluir produto" outcome="incluirProduto"/>
+                &nbsp;
+                <p:button value="Incluir alfajor" outcome="incluiTipoAlfajor"/>
+                &nbsp;
+                <p:button value="Produção" outcome="producao"/>
+                &nbsp;
+                <p:button value="Encomendas" outcome="encomendas"/>
             </h:form>
         </center>
     </h:body>

@@ -4,18 +4,20 @@ public class Produto {
     private String produto;
     private int quantidade;
     private double valor;
+    private double peso;
     private String dataCompra;
     private String localCompra;
 
-    public Produto(String produto, int quantidade, double valor, String dataCompra, String localCompra) {
+    public Produto() {
+    }
+
+    public Produto(String produto, int quantidade, double valor, double peso, String dataCompra, String localCompra) {
         this.produto = produto;
         this.quantidade = quantidade;
         this.valor = valor;
+        this.peso = peso;
         this.dataCompra = dataCompra;
         this.localCompra = localCompra;
-    }
-
-    public Produto() {
     }
 
     public String getProduto() {
@@ -42,6 +44,14 @@ public class Produto {
         this.valor = valor;
     }
 
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
     public String getDataCompra() {
         return dataCompra;
     }
@@ -57,5 +67,6 @@ public class Produto {
     public void setLocalCompra(String localCompra) {
         this.localCompra = localCompra;
     }
+
     
 }

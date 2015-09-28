@@ -1,46 +1,52 @@
+
 package Modelo;
 
-
-import java.util.Date;
-
-
 public class Alfajor {
-    private String tipo;
-    private Date validade;
-    private Date producao;
 
-    public Alfajor(String tipo, Date validade, Date producao) {
-        this.tipo = tipo;
-        this.validade = validade;
-        this.producao = producao;
-    }
+    private String tipoAlfajor;
+    private int quantidade;
+    private double valorVenda;
+    private double valorCusto;
 
     public Alfajor() {
     }
 
-    public String getTipo() {
-        return tipo;
+    public Alfajor(String tipoAlfajor, int quantidade, double valorVenda, double valorCusto) {
+        this.tipoAlfajor = tipoAlfajor;
+        this.quantidade = quantidade;
+        this.valorVenda = valorVenda;
+        this.valorCusto = valorCusto;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public String getTipoAlfajor() {
+        return tipoAlfajor;
     }
 
-    public Date getValidade() {
-        return validade;
+    public void setTipoAlfajor(String tipoAlfajor) {
+        this.tipoAlfajor = tipoAlfajor;
     }
 
-    public void setValidade(Date validade) {
-        this.validade = validade;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public Date getProducao() {
-        return producao;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public void setProducao(Date producao) {
-        this.producao = producao;
+    public double getValorVenda() {
+        return valorVenda;
     }
-    
-    
+
+    public void setValorVenda(double valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+
+    public double getValorCusto() {
+        return valorCusto;
+    }
+
+    public void setValorCusto(double valorCusto) {
+        this.valorCusto = valorCusto;
+    }
 }

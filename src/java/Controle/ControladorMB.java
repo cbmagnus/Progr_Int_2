@@ -1,6 +1,7 @@
 package Controle;
 
 
+import Modelo.Alfajor;
 import Modelo.Produto;
 import Modelo.Usuario;
 import java.util.ArrayList;
@@ -16,8 +17,11 @@ import javax.faces.context.FacesContext;
 public class ControladorMB {
     private List<Usuario> listaUsuarios;
     private List<Produto> listaProdutos;
+    private List<Alfajor> listaAlfajores;
     private Produto produto;
     private Usuario usuario;
+    private Alfajor alfajor;
+    
     private boolean logado;
 
     public ControladorMB() {
@@ -25,16 +29,22 @@ public class ControladorMB {
         
         usuario = new Usuario();
         produto = new Produto();
-        
+        alfajor = new Alfajor();
+                
         listaUsuarios = new ArrayList<Usuario>();
         listaProdutos = new ArrayList<Produto>();
+        listaAlfajores = new ArrayList<Alfajor>();
+        
+        listaAlfajores.add(new Alfajor("Alfajor chocolate branco", 55, 3.00, 2.00));
+        listaAlfajores.add(new Alfajor("Alfajor chocolate preto", 70, 3.00, 2.00));
+        listaAlfajores.add(new Alfajor("Alfajor prestigio", 30, 3.00, 2.00));
         
         listaUsuarios.add(new Usuario("admin","admin"));
         listaUsuarios.add(new Usuario("darlan","123"));
         listaUsuarios.add(new Usuario("teste","123"));
         
-        listaProdutos.add(new Produto("Chocolate Branco Nestle 1Kg", 5, 22.50, "05/08/15", "nenhum"));
-        listaProdutos.add(new Produto("Chocolate Preto Nestle 1Kg", 2, 18.50, "05/08/15", "nenhum"));
+        listaProdutos.add(new Produto("Chcolate branco Nestle", 4, 22.30, 1, "22/08/15", "Atacadão"));
+        listaProdutos.add(new Produto("Chcolate preto Nestle", 2, 18.90, 1, "12/08/15", "Atacadão"));
         
     }
 
@@ -57,6 +67,35 @@ public class ControladorMB {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+
+    public List<Alfajor> getListaAlfajores() {
+        return listaAlfajores;
+    }
+
+    public void setListaAlfajores(List<Alfajor> listaAlfajores) {
+        this.listaAlfajores = listaAlfajores;
+    }
+
+    public Alfajor getAlfajor() {
+        return alfajor;
+    }
+
+    public void setAlfajor(Alfajor alfajor) {
+        this.alfajor = alfajor;
+    }
+    
+    
+    
+    
+    
     
     public boolean estaLogado(){
         return(logado);
@@ -91,5 +130,9 @@ public class ControladorMB {
         produto = new Produto();
     }
     
+    public void incluiAlfajor(){
+        listaAlfajores.add(alfajor);
+        alfajor = new Alfajor();
+    }
     
 }

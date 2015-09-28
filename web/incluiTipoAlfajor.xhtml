@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Incluir Alfajor</title>
+    </h:head>
+    <h:body>
+
+        <center>
+            <h:form id="incluiAlfa" style="width: 70%">
+                <p:messages autoUpdate="true"/>
+                <p:panel style="width: 70%; alignment-adjust: central; border: 0px">
+                    <p:panel header="Incluir alfajores">
+                        <h:panelGrid columns="3" >
+                            <h:outputText value="Tipo alfajor:"/>
+                            <h:outputText value="Valor custo:"/>
+                            <h:outputText value="Valor venda:" style="width: 70%"/>
+                            <p:inputText value="#{controladorMB.alfajor.tipoAlfajor}"/>
+                            <p:inputText value="#{controladorMB.alfajor.valorCusto}" style="width: 70%"/>
+                            <p:inputText value="#{controladorMB.alfajor.valorVenda}" style="width: 70%"/>
+                        </h:panelGrid>
+
+                        <p:commandButton value="GRAVAR" action="#{controladorMB.incluiAlfajor()}" 
+                                         update="incluiAlfa"/>
+                        &nbsp;&nbsp;
+                        <p:commandButton value="LIMPAR" type="reset" update="formulario"/>
+                    </p:panel>
+
+                    <p:panel>
+                        <h:panelGrid columns="3">
+                            <p:dataTable value="#{controladorMB.listaAlfajores}" emptyMessage="Não ha registros." 
+                                         rows="8" var="listaAlfa">
+                                <p:column>
+                                    <h:outputText value="#{listaAlfa.tipoAlfajor}"/>
+                                </p:column>
+                                <p:column style="width: 25%">
+                                    <h:outputText value="$ #{listaAlfa.valorCusto}"/><br/>
+                                </p:column>
+                                <p:column style="width: 25%">
+                                    <h:outputText value="$ #{listaAlfa.valorVenda}"/><br/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:panel>
+                <p:commandButton value="LOGOUT" action="#{controladorMB.realizaLogout()}"/>
+                &nbsp;
+                <p:button value="Estoque" outcome="estoque"/>
+                &nbsp;
+                <p:button value="Incluir produto" outcome="incluirProduto"/>
+                &nbsp;
+                <p:button value="Produção" outcome="producao"/>
+                &nbsp;
+                <p:button value="Encomendas" outcome="encomendas"/>
+            </h:form>
+        </center>
+
+    </h:body>
+</html>
+
