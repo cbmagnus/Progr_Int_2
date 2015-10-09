@@ -14,38 +14,62 @@
             <h:form id="producao" style="width: 70%">
                 <p:messages autoUpdate="true"/>
                 <p:panel style="width: 80%; alignment-adjust: central; border: 0px">
-                    <p:panel header="Produção">
+                    <p:panel header="Produção" style="width: 80%">
                         <h:panelGrid columns="2" >
                             <p:outputLabel for="mask" value="Data produção: " />
                             <p:calendar id="mask" value="#{producaoMB.producao.dataProd}" pattern="dd-MM-yyyy" mask="true" />
+
                             <h:outputLabel for="menuAlfa" value="Tipo alfajor: "/>
-                            <p:selectOneMenu id="menuAlfa" value="#{controladorMB.listaAlfajores}" label="Alfajor"
-                                                  filter="true" filterMatchMode="startsWith">
+                            <p:selectOneMenu id="menuAlfa" value="#{producaoMB.producao.alfajor}" label="Alfajor"
+                                             filter="true" filterMatchMode="startsWith" style="width: 100%" 
+                                             required="true" converter="alfaConverter">
                                 <f:selectItem itemLabel="Selecione um alfajor" itemValue="" />
                                 <f:selectItems value="#{controladorMB.listaAlfajores}" var="alfa" itemValue="#{alfa.tipoAlfajor}" 
                                                itemLabel="#{alfa.tipoAlfajor}">
                                 </f:selectItems>
                             </p:selectOneMenu>
-                            <h:outputLabel for="menuProd" value="Produtos Utilizados: " />
-                            <p:selectCheckboxMenu id="menuProd" value="#{controladorMB.listaProdutos}" label="produtos"
-                                                  filter="true" filterMatchMode="startsWith">
-                                <f:selectItems value="#{controladorMB.listaProdutos}" var="prod" itemValue="#{prod.produto}" 
-                                               itemLabel="#{prod.produto}">
-                                </f:selectItems>
+                        </h:panelGrid>
+
+
+
+
+
+                        <h:panelGrid columns="3">
+                            <h:outputLabel for="menu" value="Produtos: " />
+                            <p:selectCheckboxMenu id="menu" value="#{producaoMB.listProdutos}" label="Produtos"
+                                                  filter="true" filterMatchMode="startsWith" converter="prodConverter" 
+                                                  required="true" >
+                                <f:selectItems value="#{controladorMB.listaProdutos}" var="prod" 
+                                               itemLabel="#{prod.produto}" itemValue="#{prod.produto}"/>
                             </p:selectCheckboxMenu>
-                            <h:outputText value="Quantidade utilizada do produto "/>
-                            <p:inputText value="#{producaoMB.listaProducao}"/>
+                            <p:commandLink value="Submit" update="display, producao" />
+                        </h:panelGrid>
+
+
+                        <p:outputPanel id="display" style="width:300px;padding-left:5px;margin-top:10px">
+                            <p:dataList value="#{producaoMB.listProdutos}" var="listProd" 
+                                        emptyMessage="Nenhum produto selecionado">
+                                #{listProd}
+                            </p:dataList>
+                        </p:outputPanel>
+
+
+
+
+
+                        <h:panelGrid columns="2" >
                             <h:outputText value="Quantidade fabricada: "/>
                             <p:inputText value="#{producaoMB.producao.qtdFabricado}"/>
                             <h:outputText value="Custao unitário: "/>
-                            <p:inputText value="#{producaoMB.producao.custoUnitario}"/>
+                            <p:outputLabel value="#{producaoMB.producao.custoUnitario}"/>
                             <h:outputText value="Custo total: "/>
-                            <p:inputText value="#{producaoMB.producao.custoTotal}"/>
+                            <p:outputLabel value="#{producaoMB.producao.custoTotal}"/>
                         </h:panelGrid>
-                        <p:commandButton value="SALVAR" action="#{controladorMB.incluiProduto()}" 
-                                         update="producao"/>
+
+                        <p:commandButton value="SALVAR" action="#{producaoMB.salvaProducao()}" 
+                                         update="producao" icon="ui-icon-check"/>
                         &nbsp;
-                        <p:commandButton value="LIMPAR" type="reset" update="formulario"/>
+                        <p:commandButton value="LIMPAR" type="reset" update="producao"/>
 
                     </p:panel>
                 </p:panel>

@@ -135,4 +135,18 @@ public class ControladorMB {
         alfajor = new Alfajor();
     }
     
+    public Alfajor findAlfaByNome(String nome){
+        for(Alfajor e: listaAlfajores)
+            if(e.getTipoAlfajor().equals(nome)) 
+                return(e);
+        return null;
+    }
+    
+    public void removerAlfajor(Alfajor alfajor){
+        listaAlfajores.remove(alfajor);
+    }
+    
+    public void removeProduto(Produto produto){
+        listaProdutos.remove(produto);
+    }
 }

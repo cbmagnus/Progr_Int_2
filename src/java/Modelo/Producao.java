@@ -14,7 +14,8 @@ public class Producao {
     public Producao() {
     }
 
-    public Producao(String dataProd, Alfajor alfajor, List<Produto> listProdutosUtilizados, int qtdFabricado, double custoUnitario, double custoTotal) {
+    public Producao(String dataProd, Alfajor alfajor, List<Produto> listProdutosUtilizados, int qtdFabricado,
+            double custoUnitario, double custoTotal) {
         this.dataProd = dataProd;
         this.alfajor = alfajor;
         this.listProdutosUtilizados = listProdutosUtilizados;

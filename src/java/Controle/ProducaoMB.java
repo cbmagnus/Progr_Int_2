@@ -1,7 +1,5 @@
-
 package Controle;
 
-import Modelo.Alfajor;
 import Modelo.Producao;
 import Modelo.Produto;
 import java.util.ArrayList;
@@ -13,34 +11,24 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ProducaoMB {
 
-    private List<Producao> listaProducao;
-    private List<Produto> listProd;
+    private List<Producao> listProducao;
+    private List<Produto> listProdutos;
     private Producao producao;
-    private Alfajor alfajor;
     private Produto produto;
-    
+
     public ProducaoMB() {
+        listProducao = new ArrayList<Producao>();
+        listProdutos = new ArrayList<Produto>();
         producao = new Producao();
-        listaProducao = new ArrayList<Producao>();
-        listProd = new ArrayList<Produto>();
-        alfajor = new Alfajor();
-        produto = new Produto();        
+        produto = new Produto();
     }
 
-    public List<Producao> getListaProducao() {
-        return listaProducao;
+    public List<Producao> getListProducao() {
+        return listProducao;
     }
 
-    public void setListaProducao(List<Producao> listaProducao) {
-        this.listaProducao = listaProducao;
-    }
-
-    public List<Produto> getListProd() {
-        return listProd;
-    }
-
-    public void setListProd(List<Produto> listProd) {
-        this.listProd = listProd;
+    public void setListProducao(List<Producao> listProducao) {
+        this.listProducao = listProducao;
     }
 
     public Producao getProducao() {
@@ -51,14 +39,6 @@ public class ProducaoMB {
         this.producao = producao;
     }
 
-    public Alfajor getAlfajor() {
-        return alfajor;
-    }
-
-    public void setAlfajor(Alfajor alfajor) {
-        this.alfajor = alfajor;
-    }
-
     public Produto getProduto() {
         return produto;
     }
@@ -66,5 +46,39 @@ public class ProducaoMB {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+    public List<Produto> getListProdutos() {
+        return listProdutos;
+    }
+
+    public void setListProdutos(List<Produto> listProdutos) {
+        this.listProdutos = listProdutos;
+    }
+    
+    
+    
+    
+    
+    
+    
+
+    public void incluiProdutos() {
+        listProdutos = producao.getListProdutosUtilizados();
+//        listProdutos.add(produto);
+//        produto = new Produto();
+    }
+    
+    public void salvaProducao(){
+        listProducao.add(producao);
+        producao = new Producao();
+    }
+    
+    public Produto findProdutoByNome(String nome){
+        for(Produto e: listProdutos)
+            if(e.getProduto().equals(nome))
+                return(e);
+        return null;
+    }
+    
     
 }
